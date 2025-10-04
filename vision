@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Révélation à venir</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 4em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    #message {
+      font-size: 1.3em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Patientez encore un peu…</h1>
+  <div id="countdown">--:--:--</div>
+  <div id="message">La révélation arrive le 10 octobre à 17h30 !</div>
+
+  <script>
+    // 🕒 Date de révélation
+    const revealDate = new Date("2025-10-10T17:30:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = revealDate - now;
+
+      if (diff <= 0) {
+        // Quand le compte à rebours est terminé, redirige vers la révélation
+        window.location.href = "revelation.html";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const str =
+        (days > 0 ? days + "j " : "") +
+        String(hours).padStart(2, '0') + ":" +
+        String(minutes).padStart(2, '0') + ":" +
+        String(seconds).padStart(2, '0');
+
+      document.getElementById("countdown").textContent = str;
+      setTimeout(updateCountdown, 1000);
+    }
+
+    updateCountdown();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Révélation 🎥</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    iframe {
+      width: 80%;
+      height: 60vh;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Voici la révélation !</h1>
+  <iframe 
+    src="https://www.youtube.com/embed/JtffRGW9l9c"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</body>
+</html>
