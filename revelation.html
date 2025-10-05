@@ -2,39 +2,50 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Révélation 🎥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révélation</title>
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    html, body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      text-align: center;
+
+    video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover; /* ✅ rempli bien tout l'écran */
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1.5s ease-in; /* ✅ fondu d’apparition */
     }
-    iframe {
-      width: 80%;
-      height: 60vh;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+
+    .visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <h1>Découvrez le lieu 🎉 !</h1>
-  <iframe 
-    src="https://www.dl.dropboxusercontent.com/scl/fi/3ry22xf3w2a1q1xdk30pl/monfilmvision.mp4?rlkey=03xjti81mbywsg54lzkjxdc1e&st=aerkhesq"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
+  <video id="revealVideo" autoplay controls playsinline>
+    <source src="https://www.dropbox.com/scl/fi/3ry22xf3w2a1q1xdk30pl/monfilmvision.mp4?raw=1" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+
+  <script>
+    const video = document.getElementById("revealVideo");
+
+    // ✅ Quand la vidéo est prête, on la rend visible avec fondu
+    video.addEventListener("canplay", () => {
+      video.classList.add("visible");
+    });
+  </script>
 </body>
 </html>
