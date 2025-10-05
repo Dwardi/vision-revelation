@@ -2,46 +2,33 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Révélation à venir</title>
   <style>
     body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-
-  background-image: url('https://raw.githubusercontent.com/Dwardi/vision-revelation/refs/heads/main/vision-3.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain; /* 👈 montre toute l’image */
-  background-color: black; /* 👈 fond autour si image plus petite */
-}
-
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+     background: url('https://raw.githubusercontent.com/Dwardi/vision-revelation/refs/heads/main/vision-3.png') no-repeat center center fixed;
+     background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
     h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       margin-bottom: 30px;
     }
-
     #countdown {
       font-size: 2em;
       font-weight: bold;
       margin-bottom: 20px;
     }
-
     #message {
-      font-size: 1.5em;
+      font-size: 2em;
       opacity: 0.9;
-      padding: 0 20px;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      #countdown { font-size: 1.5em; }
-      #message { font-size: 1.2em; }
     }
   </style>
 </head>
@@ -51,6 +38,7 @@
   <div id="message">La révélation arrive le 10 octobre à 17h30 !</div>
 
   <script>
+    // 🕒 Date de révélation
     const revealDate = new Date("2025-10-10T17:30:00");
 
     function updateCountdown() {
@@ -58,6 +46,7 @@
       const diff = revealDate - now;
 
       if (diff <= 0) {
+        // Quand le compte à rebours est terminé, redirige vers la révélation
         window.location.href = "revelation.html";
         return;
       }
