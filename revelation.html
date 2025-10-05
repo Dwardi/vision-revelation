@@ -3,50 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Révélation</title>
+  <title>Révélation 🎥</title>
   <style>
-    html, body {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
       overflow: hidden;
     }
 
-    video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover; /* ✅ rempli bien tout l'écran */
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 1.5s ease-in; /* ✅ fondu d’apparition */
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    .visible {
-      opacity: 1;
+    iframe {
+      width: 80%;
+      max-width: 900px;
+      height: 50vh;
+      max-height: 500px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.4em; margin-bottom: 15px; }
+      iframe {
+        width: 90%;
+        height: 45vh;
+        max-height: none;
+      }
     }
   </style>
 </head>
 <body>
-  <video id="revealVideo" autoplay controls playsinline>
-  <source src="https://dl.dropboxusercontent.com/scl/fi/3ry22xf3w2a1q1xdk30pl/monfilmvision.mp4?rlkey=03xjti81mbywsg54lzkjxdc1e" type="video/mp4">
-  Votre navigateur ne supporte pas la vidéo.
-</video>
-
-
-  <script>
-    const video = document.getElementById("revealVideo");
-
-    // ✅ Quand la vidéo est prête, on la rend visible avec fondu
-    video.addEventListener("canplay", () => {
-      video.classList.add("visible");
-    });
-  </script>
+  <h1>Découvrez le lieu 🎉</h1>
+  <iframe 
+    src="https://dl.dropboxusercontent.com/scl/fi/3ry22xf3w2a1q1xdk30pl/monfilmvision.mp4?rlkey=03xjti81mbywsg54lzkjxdc1e&st=aerkhesq"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
 </body>
 </html>
